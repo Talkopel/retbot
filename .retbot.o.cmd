@@ -1,0 +1,1 @@
+cmd_/home/kopel/Desktop/retbot/retbot.o := ld -m elf_x86_64   -r -o /home/kopel/Desktop/retbot/retbot.o /home/kopel/Desktop/retbot/./src/retbot.o /home/kopel/Desktop/retbot/./src/collector.o /home/kopel/Desktop/retbot/./src/recorder.o 
