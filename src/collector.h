@@ -9,6 +9,7 @@
 #include <linux/string.h>
 #include <linux/sched.h>
 #include <linux/cred.h>
+#include <linux/time.h>
 
 #include "recorder.h"
 

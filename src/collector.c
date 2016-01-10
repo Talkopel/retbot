@@ -49,8 +49,11 @@ asmlinkage int COLLECTOR_hooked_open(const char * file, int flags, int mode) {
 
 static void COLLECTOR_write_open_log( const char *file, unsigned int uid, int mode ) {
 
+	struct timeval time = {NULL};
 	char log[RECORDER_MESSAGE_SIZE];
 
-	snprintf( log, RECORDER_MESSAGE_SIZE, "OPEN FILE:%s USER:%u MODE:%d", file, uid, mode );
+	do_gettimeofday( &time );
+
+	snprintf( log, RECORDER_MESSAGE_SIZE, "OPEN FILE:%s USER:%u MODE:%d TIME:%d", file, uid, mode, time.tv_sec );
 	RECORDER_add_message( log, strlen( log ) ); 
 }
