@@ -8,7 +8,9 @@ void RECORDER_add_message( const char *message, unsigned char m_size ) {
 
 	if ( RECORDER_buffer_current_size + m_size + 1 < RECORDER_BUFFER_SIZE) {
 		/* Write at write ptr */
-		memcpy( &write_ptr[0], &m_size, sizeof(unsigned char) );
+		/* memcpy( &write_ptr[0], &m_size, sizeof(unsigned char) ); --> depracated: 
+		 * heavier processing required in python to parse this */
+		*write_ptr = 1; /* Set separator as SOH */
 		write_ptr += 1;
 		strncpy( write_ptr, message, m_size );
 		write_ptr += m_size;
