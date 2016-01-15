@@ -10,6 +10,7 @@
 #include <linux/sched.h>
 #include <linux/cred.h>
 #include <linux/time.h>
+#include <linux/limits.h>
 
 #include "recorder.h"
 
@@ -20,9 +21,10 @@
 unsigned long **COLLECTOR_find_table( void );
 
 /* OPEN hook stuff */
-void COLLECTOR_hook_open( unsigned long **table );
-void COLLECTOR_unhook_open( unsigned long **table );
+inline void COLLECTOR_hook_open( unsigned long **table );
+inline void COLLECTOR_unhook_open( unsigned long **table );
 asmlinkage int COLLECTOR_hooked_open(const char * file, int flags, int mode);
 static void COLLECTOR_write_open_log( const char *file, unsigned int uid, int mode );
+inline unsigned long long COLLECTOR_get_files_opened( void );
 
 #endif

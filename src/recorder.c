@@ -4,7 +4,7 @@ char RECORDER_buffer[RECORDER_BUFFER_SIZE];
 static unsigned short RECORDER_buffer_current_size = 0;
 static char *write_ptr = RECORDER_buffer;
 
-void RECORDER_add_message( const char *message, unsigned char m_size ) {
+inline void RECORDER_add_message( const char *message, unsigned char m_size ) {
 
 	if ( RECORDER_buffer_current_size + m_size + 1 < RECORDER_BUFFER_SIZE) {
 		/* Write at write ptr */
@@ -19,13 +19,18 @@ void RECORDER_add_message( const char *message, unsigned char m_size ) {
 
 }
 
-void RECORDER_clean_buffer( void ) {
-
+inline void RECORDER_clean_buffer( void ) {
+	
+	memset( RECORDER_buffer, 0, RECORDER_BUFFER_SIZE );
 	RECORDER_buffer_current_size = 0;
 	write_ptr = RECORDER_buffer;
 }
 
-char *RECORDER_get_buffer( void ) {
+inline char *RECORDER_get_buffer( void ) {
 	
 	return RECORDER_buffer;
+}
+
+inline unsigned short RECORDER_get_buffer_size( void ) {
+	return RECORDER_buffer_current_size;
 }

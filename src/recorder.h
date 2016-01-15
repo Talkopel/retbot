@@ -7,8 +7,9 @@
 #define RECORDER_MESSAGE_SIZE 256
 
 /* @brief: Adds message to buffer */
-void RECORDER_add_message( const char *message, unsigned char m_size );
-void RECORDER_clean_buffer( void );
-char *RECORDER_get_buffer( void );
+inline void RECORDER_add_message( const char *message, unsigned char m_size );
+inline void RECORDER_clean_buffer( void );
+inline char *RECORDER_get_buffer( void );
+inline unsigned short RECORDER_get_buffer_size( void );
 
 #endif

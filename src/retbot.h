@@ -7,6 +7,9 @@
 #include <linux/fs.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
+#include <linux/netlink.h>
+#include <linux/skbuff.h>
+#include <net/sock.h>
 
 #include "collector.h"
 #include "recorder.h"
@@ -26,6 +29,9 @@ int RETBOT_open_proc( struct inode *inode, struct file *file );
 
 /* @brief: write data to proc */
 int RETBOT_print_logs( struct seq_file *m, void *v );
+
+/* @brief: connect function from netlink */
+static void RETBOT_netlink_reciever( struct sk_buff *sk );
 
 const struct file_operations RETBOT_proc_info = {
     .owner      = THIS_MODULE,
